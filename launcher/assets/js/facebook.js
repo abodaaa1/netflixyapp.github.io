@@ -13,9 +13,11 @@ window.fbAsyncInit = function () {
     if (d.getElementById(id)) { return; }
     js = d.createElement(s); js.id = id;
     js.src = "https://connect.facebook.net/fr_FR/sdk.js";
+    js.onerror = function () {
+        showError("Veuillez désactiver votre bloqueur de pubs pour permettre l'accès à Facebook.")
+    };
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk')
-);
+}(document, 'script', 'facebook-jssdk'));
 
 function isFBConnected() {
     return new Promise((resolve, reject) => {

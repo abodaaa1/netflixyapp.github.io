@@ -44,8 +44,7 @@ window.onload = function () {
                             window.open('https://www.netflix.com/?nftoken=' + data.data.NFToken)
                         }
                         else {
-                            dashboardErrorText.classList.remove('hidden')
-                            dashboardErrorText.innerHTML = data.message
+                            showError(data.message)
                         }
                     })
             })
@@ -68,11 +67,15 @@ window.onload = function () {
                             $('#androidModal').modal('show')
                         }
                         else {
-                            dashboardErrorText.classList.remove('hidden')
-                            dashboardErrorText.innerHTML = data.message
+                            showError(data.message)
                         }
                     })
             })
         })
     }
+}
+
+function showError(message) {
+    dashboardErrorText.classList.remove('hidden')
+    dashboardErrorText.innerHTML = message
 }
